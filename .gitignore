@@ -1,0 +1,19 @@
+# node_modules should not be tracked
+node_modules/
+
+# Logs
+logs
+*.log
+
+# Environment files
+.env
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Build output
+dist/
+build/
+
+.parcel-cache
