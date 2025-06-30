@@ -16,4 +16,5 @@ Thumbs.db
 dist/
 build/
 
-.parcel-cache
+# Parcel cache
+.parcel-cache/
