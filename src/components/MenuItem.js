@@ -3,11 +3,11 @@ import { useDispatch } from "react-redux";
 import { addItem } from "../utils/CartSlice";
 import { IMAGE_URL } from "../constants";
 
-const MenuItemCard = ({ name, price, description, imageId }) => {
+const MenuItemCard = ({ id, name, price, description, imageId }) => {
   const dispatch = useDispatch();
 
   const handleAddToCart = () => {
-    dispatch(addItem({ name, price, description, imageId }));
+    dispatch(addItem({ id, name, price, description, imageId }));
   };
 
   return (

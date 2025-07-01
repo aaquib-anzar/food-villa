@@ -1,72 +1,81 @@
 import { Outlet } from "react-router";
-import Profile from "./Profile";
 import { useState } from "react";
+import { ChevronDown, ChevronUp } from "lucide-react";
 
 const Section = ({ title, description, isVisible, setIsVisible }) => {
   return (
-    <div className=" border border-black p-2 m-2 ">
-      <h3 className="font-bold text-xl">{title}</h3>
-
-      {!isVisible ? (
+    <div className="border rounded-lg shadow-sm p-4 m-4 bg-gray-50">
+      <div className="flex justify-between items-center">
+        <h3 className="text-xl font-bold text-gray-800">{title}</h3>
         <button
-          className="cursor-pointer underline m-1"
+          className="text-blue-600 font-medium hover:underline flex items-center gap-1"
           onClick={setIsVisible}
         >
-          Show
+          {isVisible ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
         </button>
-      ) : (
-        <>
-          <button
-            className="cursor-pointer  underline m-1"
-            onClick = {setIsVisible}
-          >
-            Hide
-          </button>
-          <p>{description}</p>
-        </>
+      </div>
+
+      {isVisible && (
+        <p className="mt-3 text-gray-700 text-sm leading-relaxed whitespace-pre-line">
+          {description}
+        </p>
       )}
     </div>
   );
 };
+
 const About = () => {
   const [isVisible, setIsVisible] = useState("");
+
   return (
-    <div>
-      <h1 className="text-4xl font-extrabold text-center p-2 m-2">About Us</h1>
+    <div className="max-w-3xl mx-auto px-4 pb-24">
+      <h1 className="text-4xl font-extrabold text-center py-6 text-gray-800">
+        About Us
+      </h1>
       <Outlet />
       <Section
-        title={"About"}
-        description={
-          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
-        }
+        title="About"
+        description={`Hey there, hungry human! 👋
+Welcome to Foodie Hub — your ultimate food fix partner. Whether it’s midnight cravings, lazy Sundays, or just a bad day needing good biryani, we’ve got your back. We deliver hot, delicious food from your favorite restaurants faster than you can say "extra cheese, please!" 🍕🚀
+
+Crave it. Tap it. Eat happy. 😋`}
         isVisible={isVisible === "about"}
-        setIsVisible={() =>
-          isVisible !== "about" ? setIsVisible("about") : setIsVisible("")
-        }
+        setIsVisible={() => setIsVisible(isVisible === "about" ? "" : "about")}
       />
       <Section
-        title={"Career"}
-        description={
-          "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of de Finibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, Lorem ipsum dolor sit amet.., comes from a line in section 1.10.32."
-        }
+        title="Careers at Foodie Hub"
+        description={`Join the feast behind the scenes! 🍽️
+At Foodie Hub, we're not just delivering food — we're building the future of convenience. If you're passionate about tech, food, or solving real-world problems, come build with us.
+
+🚀 Open Opportunities:
+• Frontend Developer (React.js): Craft slick, responsive UIs that make ordering food feel like magic.
+
+• Backend Developer (Node.js, MongoDB): Cook up fast, scalable APIs to keep the orders rolling and the food flowing.
+
+• UI/UX Designer: Design intuitive, mouth-watering experiences users can’t resist.
+
+Drop your CV at: careers@foodiehub.com`}
         isVisible={isVisible === "career"}
         setIsVisible={() =>
-          isVisible !== "career" ? setIsVisible("career") : setIsVisible("")
+          setIsVisible(isVisible === "career" ? "" : "career")
         }
       />
       <Section
-        title={"Team"}
-        description={`It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+        title="Meet the Team 👨‍💻👩‍🍳"
+        description={`We're a small team with big appetites — for both food and innovation!
 
-"`}
+• John (Founder & Fullstack Dev): The brain behind the build, balancing backend logic with frontend flair.
+
+• Sara (Product Designer): The eyes of the user, turning tasty ideas into beautiful, clickable pixels.
+
+• Dev (DevOps & Infra): Keeps our app fast, smooth, and always hungry for scale.
+
+Together, we're cooking up something amazing. And we're just getting started!`}
         isVisible={isVisible === "team"}
-        setIsVisible={() =>
-          isVisible !== "team" ? setIsVisible("team") : setIsVisible("")
-        }
+        setIsVisible={() => setIsVisible(isVisible === "team" ? "" : "team")}
       />
     </div>
   );
 };
 
 export default About;
-/**/
