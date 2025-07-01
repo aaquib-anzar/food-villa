@@ -14,6 +14,7 @@ import UserContext from "./utils/UserContext";
 import { Provider } from "react-redux";
 import store from "./utils/store";
 import Cart from "./components/Cart";
+import { filterData } from "./utils/helper";
 //import AboutClass from "./components/AboutClass";
 //import ProfileComponent from "./components/ProfileClass";
 /*const heading1 = React.createElement(
@@ -37,6 +38,7 @@ const div = React.createElement("div", { id: "container" }, [
 
 //Chunking,Lazy Loading/Dynamic import dynamic bundling
 const Instamart = lazy(() => import("./components/InstaMart"));
+
 //JSX
 
 const AppLayout = () => {
@@ -44,11 +46,19 @@ const AppLayout = () => {
     name: "Swiggy",
     email: "swiggy@swiggy.com",
   });
+
+const [allRestaurants, setAllRestaurants] = useState([]);
+const [filteredRestaurants, setFilteredRestaurants] = useState([]);
+const [searchText, setSearchText] = useState("");
+const onSearch = () => {
+      setFilteredRestaurants(filterData(searchText,allRestaurants))
+      setSearchText("")
+}
   return (
     <Provider store={store}>
       <UserContext.Provider value = {{user:user, setUser:setUser}}>
-      <Header />
-      <Outlet />
+      <Header searchText={searchText} setSearchText={setSearchText} onSearch={onSearch}/>
+      <Outlet context = {{allRestaurants , filteredRestaurants, setAllRestaurants, setFilteredRestaurants}}/>
       <Footer />
     </UserContext.Provider>
     </Provider>

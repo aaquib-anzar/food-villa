@@ -1,21 +1,60 @@
+import React from "react";
 import { useDispatch } from "react-redux";
-import { IMAGE_URL } from "../constants";
 import { addItem } from "../utils/CartSlice";
-const MenuItem = (props) => {
-  const dispatch = useDispatch()
-  const handleClick = () => {
-    dispatch(addItem(props.Menu))
-  }
+import { IMAGE_URL } from "../constants";
+
+const MenuItemCard = ({ name, price, description, imageId }) => {
+  const dispatch = useDispatch();
+
+  const handleAddToCart = () => {
+    dispatch(addItem({ name, price, description, imageId }));
+  };
+
   return (
-    <div  className="w-[210px] bg-amber-200 shadow-xl rounded-xl  p-2 m-2">
-      <img className="w-[200px]" src={IMAGE_URL + props.Menu.imageId} />
+    <div className="flex justify-between items-start gap-4 p-4 border-b border-gray-200">
+      {/* LEFT: Text Info */}
+      <div className="flex-1">
+        <h3 className="text-base font-medium text-gray-900">{name}</h3>
 
-      <p className="text-center text-xl font-bold line-clamp-1 m-2">{props.Menu.name}</p>
-      <h3></h3>
+        {price && (
+          <p className="text-sm font-semibold text-gray-700 mt-1">
+            ₹{price / 100}
+          </p>
+        )}
 
-      <p className="text-center">{"Rs." + props.Menu.price /100}</p>
-      <span><button data-testid = "addbtn" className="" onClick={() => handleClick()}>+</button></span>
+        <p
+          className="text-xs text-gray-500 mt-2"
+          style={{
+            display: "-webkit-box",
+            WebkitBoxOrient: "vertical",
+            WebkitLineClamp: 2,
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+          }}
+        >
+          {description || "No description available"}
+        </p>
+      </div>
+
+      {/* RIGHT: Image + ADD */}
+      <div className="w-28 relative">
+        {imageId && (
+          <img
+            className="w-full h-24 object-cover rounded-md border border-gray-100"
+            src={IMAGE_URL + imageId}
+            alt={name}
+          />
+        )}
+
+        <button
+          onClick={handleAddToCart}
+          className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 bg-white border border-gray-400 text-green-600 text-xs font-semibold px-4 py-[2px] rounded shadow-sm hover:border-green-500 hover:text-green-700 transition"
+        >
+          ADD
+        </button>
+      </div>
     </div>
   );
 };
-export default MenuItem;
+
+export default MenuItemCard;

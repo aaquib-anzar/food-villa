@@ -1,17 +1,17 @@
 import RestaurantCard from "./RestaurantCard";
-import { filterData } from "../utils/helper";
-import { useState, useEffect, useContext } from "react";
+import { useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router";
-import UserContext from "../utils/UserContext";
+import { useOutletContext } from "react-router";
 
 const Body = () => {
   //const [restaurants, setRestaurants] = useState(restaurantList);
-
-  const [allRestaurants, setAllRestaurants] = useState([]);
-  const [filteredRestaurants, setFilteredRestaurants] = useState([]);
-  const [searchText, setSearchText] = useState("");
-  const { user, setUser } = useContext(UserContext);
+  const {
+    allRestaurants,
+    filteredRestaurants,
+    setAllRestaurants,
+    setFilteredRestaurants,
+  } = useOutletContext();
 
   async function getData() {
     const data = await fetch(
@@ -31,56 +31,21 @@ const Body = () => {
     getData();
   }, []);
 
-  return allRestaurants ?.length === 0 ? (
+  return allRestaurants?.length === 0 ? (
     <Shimmer />
   ) : (
-    <>
-      <div className="flex justify-between bg-amber-100 shadow-xl p-2 m-2 h-17 rounded-xl">
-        <div></div>
-        <div className="justify-between">
-          <input
-            data-testid="search-txt"
-            type="text"
-            className=" bg-amber-50 p-2 rounded-xl"
-            placeholder="Find food near you!!"
-            value={searchText}
-            onChange={(e) => {
-              setSearchText(e.target.value);
-            }}
-          />
-          <button
-            data-testid="search-btn"
-            className="hover:font-extrabold rounded-xl p-2 m-2"
-            type="search"
-            onClick={() => {
-              const data = filterData(searchText, allRestaurants);
-              setFilteredRestaurants(data);
-            }}
+    <div className="flex flex-wrap" data-testid="res-list">
+      {filteredRestaurants.map((restaurant) => {
+        return (
+          <Link
+            to={"/restaurant/" + restaurant.info.id}
+            key={restaurant.info.id}
           >
-            Search
-          </button>
-        </div>
-        <div></div>
-      </div>
-      <div className="flex flex-wrap" data-testid="res-list">
-        {!filteredRestaurants ? (
-          <h1 data-testid = "shimmer">
-            <Shimmer />
-          </h1>
-        ) : (
-          filteredRestaurants.map((restaurant) => {
-            return (
-              <Link
-                to={"/restaurant/" + restaurant.info.id}
-                key={restaurant.info.id}
-              >
-                <RestaurantCard {...restaurant.info} />
-              </Link>
-            );
-          })
-        )}
-      </div>
-    </>
+            <RestaurantCard {...restaurant.info} />
+          </Link>
+        );
+      })}
+    </div>
   );
 };
 export default Body;

@@ -9,10 +9,10 @@ const RestaurantMenu = () => {
   return !restaurantMenu ? (
     <Shimmer />
   ) : (
-    <div data-testid = "menu" className="flex flex-wrap">
+    <div data-testid = "menu" className="flex flex-col gap-4">
       {Object.values(restaurantMenu).map((resMenu) => {
         return(
-          <MenuItem key={resMenu.card.info.id} Menu = {resMenu.card.info} />
+          <MenuItem key={resMenu.card.info.id} {...resMenu.card.info} />
         ) 
         
       })}

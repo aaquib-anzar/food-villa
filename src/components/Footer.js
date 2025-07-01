@@ -1,8 +1,18 @@
+
+
 const Footer = () => {
   return (
-    <div className="p-2 m-2  bg-amber-100 rounded-xl shadow-xl">
-      <p className=" text-center text-xl font-extrabold"> Footer</p>;
-    </div>
+    <footer className="flex justify-between items-center px-6 py-3 bg-white shadow sticky bottom-0 z-50">
+      {/* Left: Copyright */}
+      <p className="text-sm text-gray-600 font-medium">
+        © {new Date().getFullYear()} Foodie Hub 🍔 – All Rights Reserved
+      </p>
+
+      {/* Right: Credits or Links */}
+      <div className="text-sm text-gray-500 hover:text-black transition-colors">
+        Built with ❤️ by Aaquib
+      </div>
+    </footer>
   );
 };
 
