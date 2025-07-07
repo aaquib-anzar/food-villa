@@ -679,11 +679,27 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 exports.default = void 0;
+var _groceryData = require("309f73cb1c5f1742");
+var _Shimmer = _interopRequireDefault(require("21e3bcc1099b4a22"));
+var _GroceryItemCard = _interopRequireDefault(require("f9d9edaa330fb581"));
+var _reactRouter = require("216b0fddbff55609");
 var _jsxRuntime = require("b3658eccd29ceaaf");
+function _interopRequireDefault(e) {
+    return e && e.__esModule ? e : {
+        default: e
+    };
+}
 const Instamart = ()=>{
-    return /*#__PURE__*/ (0, _jsxRuntime.jsx)("div", {
-        children: /*#__PURE__*/ (0, _jsxRuntime.jsx)("h1", {
-            children: "Instamart in making!!!"
+    return _GroceryItemCard.default?.length === 0 ? /*#__PURE__*/ (0, _jsxRuntime.jsx)(_Shimmer.default, {}) : /*#__PURE__*/ (0, _jsxRuntime.jsx)("div", {
+        className: "flex flex-wrap",
+        "data-testid": "res-list",
+        children: _groceryData.groceryItems.map((item)=>{
+            return /*#__PURE__*/ (0, _jsxRuntime.jsx)(_reactRouter.Link, {
+                to: "/instamart/" + item.id,
+                children: /*#__PURE__*/ (0, _jsxRuntime.jsx)(_GroceryItemCard.default, {
+                    ...item
+                })
+            }, item.id);
         })
     });
 };
@@ -697,6 +713,216 @@ $RefreshReg$(_c, "Instamart");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"b3658eccd29ceaaf":"05iiF","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}]},["e8Kn7"], null, "parcelRequire164e", {})
+},{"b3658eccd29ceaaf":"05iiF","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","309f73cb1c5f1742":"bdtmz","21e3bcc1099b4a22":"fSZbx","f9d9edaa330fb581":"eLfT3","216b0fddbff55609":"2jawN"}],"bdtmz":[function(require,module,exports,__globalThis) {
+"use strict";
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.groceryItems = void 0;
+const groceryItems = exports.groceryItems = [
+    {
+        id: 1,
+        name: "LED Flashing Pet Collar",
+        price: 38,
+        image: "https://source.unsplash.com/160x160/?pet,collar",
+        category: "Pet Supplies"
+    },
+    {
+        id: 2,
+        name: "Multi-Layer Food Steamer",
+        price: 66,
+        image: "https://source.unsplash.com/160x160/?food,steamer",
+        category: "Kitchen"
+    },
+    {
+        id: 3,
+        name: "Elegant Maxi Skirt",
+        price: 47,
+        image: "https://source.unsplash.com/160x160/?clothing,skirt",
+        category: "Fashion"
+    },
+    {
+        id: 4,
+        name: "Cinnamon Rolls",
+        price: 49,
+        image: "https://source.unsplash.com/160x160/?cinnamon,rolls",
+        category: "Bakery"
+    },
+    {
+        id: 5,
+        name: "Dish Soap Dispenser",
+        price: 73,
+        image: "https://source.unsplash.com/160x160/?kitchen,dispenser",
+        category: "Cleaning"
+    },
+    {
+        id: 6,
+        name: "Kids' Gardening Tools Set",
+        price: 97,
+        image: "https://source.unsplash.com/160x160/?gardening,tools",
+        category: "Gardening"
+    },
+    {
+        id: 7,
+        name: "Buttermilk Pancakes",
+        price: 16,
+        image: "https://source.unsplash.com/160x160/?pancakes,breakfast",
+        category: "Breakfast"
+    },
+    {
+        id: 8,
+        name: "Smoked Paprika",
+        price: 18,
+        image: "https://source.unsplash.com/160x160/?paprika,spices",
+        category: "Spices"
+    },
+    {
+        id: 9,
+        name: "Paint By Numbers Kit",
+        price: 32,
+        image: "https://source.unsplash.com/160x160/?art,kit",
+        category: "Arts & Crafts"
+    },
+    {
+        id: 10,
+        name: "Hiking Gaiters",
+        price: 100,
+        image: "https://source.unsplash.com/160x160/?hiking,gear",
+        category: "Outdoor"
+    },
+    {
+        id: 11,
+        name: "Saffron Rice Mix",
+        price: 38,
+        image: "https://source.unsplash.com/160x160/?rice,mix",
+        category: "Grains"
+    },
+    {
+        id: 12,
+        name: "Compact Umbrella",
+        price: 76,
+        image: "https://source.unsplash.com/160x160/?umbrella",
+        category: "Accessories"
+    },
+    {
+        id: 13,
+        name: "Sliced Strawberries",
+        price: 16,
+        image: "https://source.unsplash.com/160x160/?strawberries",
+        category: "Fruits"
+    },
+    {
+        id: 14,
+        name: "Chunky Knit Sweater",
+        price: 93,
+        image: "https://source.unsplash.com/160x160/?sweater",
+        category: "Clothing"
+    },
+    {
+        id: 15,
+        name: "Organic Spinach",
+        price: 2,
+        image: "https://source.unsplash.com/160x160/?spinach",
+        category: "Vegetables"
+    },
+    {
+        id: 16,
+        name: "Personal Blender with Cups",
+        price: 52,
+        image: "https://source.unsplash.com/160x160/?blender",
+        category: "Appliances"
+    },
+    {
+        id: 17,
+        name: "Multi-Purpose Scissors",
+        price: 6,
+        image: "https://source.unsplash.com/160x160/?scissors",
+        category: "Stationery"
+    },
+    {
+        id: 18,
+        name: "Smart Doorbell",
+        price: 30,
+        image: "https://source.unsplash.com/160x160/?smart,doorbell",
+        category: "Electronics"
+    },
+    {
+        id: 19,
+        name: "Handmade Leather Journal",
+        price: 29,
+        image: "https://source.unsplash.com/160x160/?journal,leather",
+        category: "Stationery"
+    },
+    {
+        id: 20,
+        name: "High-Quality Yoga Block",
+        price: 31,
+        image: "https://source.unsplash.com/160x160/?yoga,block",
+        category: "Fitness"
+    }
+];
+
+},{}],"eLfT3":[function(require,module,exports,__globalThis) {
+var $parcel$ReactRefreshHelpers$9b77 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+$parcel$ReactRefreshHelpers$9b77.init();
+var prevRefreshReg = globalThis.$RefreshReg$;
+var prevRefreshSig = globalThis.$RefreshSig$;
+$parcel$ReactRefreshHelpers$9b77.prelude(module);
+
+try {
+"use strict";
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = void 0;
+var _react = _interopRequireDefault(require("e29232730d68ecff"));
+var _jsxRuntime = require("2d8e09cb6ce06077");
+function _interopRequireDefault(e) {
+    return e && e.__esModule ? e : {
+        default: e
+    };
+}
+function GroceryItemCard({ image, name, category, price }) {
+    return /*#__PURE__*/ (0, _jsxRuntime.jsxs)("div", {
+        className: "w-48 p-4 bg-white rounded-lg shadow hover:shadow-lg transition",
+        children: [
+            /*#__PURE__*/ (0, _jsxRuntime.jsx)("img", {
+                src: image,
+                alt: name,
+                className: "w-full h-32 object-cover rounded"
+            }),
+            /*#__PURE__*/ (0, _jsxRuntime.jsx)("h3", {
+                className: "mt-2 font-semibold text-sm line-clamp-2",
+                children: name
+            }),
+            /*#__PURE__*/ (0, _jsxRuntime.jsx)("p", {
+                className: "text-gray-500 text-xs mt-1",
+                children: category
+            }),
+            /*#__PURE__*/ (0, _jsxRuntime.jsxs)("p", {
+                className: "text-black font-bold mt-1",
+                children: [
+                    "\u20B9",
+                    price
+                ]
+            }),
+            /*#__PURE__*/ (0, _jsxRuntime.jsx)("button", {
+                className: "mt-2 px-3 py-1 bg-green-500 text-white rounded text-sm",
+                children: "Add"
+            })
+        ]
+    });
+}
+_c = GroceryItemCard;
+var _default = exports.default = GroceryItemCard;
+var _c;
+$RefreshReg$(_c, "GroceryItemCard");
+
+  $parcel$ReactRefreshHelpers$9b77.postlude(module);
+} finally {
+  globalThis.$RefreshReg$ = prevRefreshReg;
+  globalThis.$RefreshSig$ = prevRefreshSig;
+}
+},{"e29232730d68ecff":"jMk1U","2d8e09cb6ce06077":"05iiF","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}]},["e8Kn7"], null, "parcelRequire164e", {})
 
 //# sourceMappingURL=InstaMart.2e190b3f.js.map

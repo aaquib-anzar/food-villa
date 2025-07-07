@@ -732,4 +732,4 @@ export const restaurantList = [
 ];
 export const IMAGE_URL = "https://media-assets.swiggy.com/swiggy/image/upload/f_auto,q_auto,fl_lossy/"
 
-export const RES_MENU_URL = "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&&lat=28.6768&lng=77.4371&restaurantId="
+export const RES_MENU_URL = "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&lat=28.6768&lng=77.4371&restaurantId="

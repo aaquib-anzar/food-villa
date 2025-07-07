@@ -10,9 +10,9 @@ const RestaurantMenu = () => {
     <Shimmer />
   ) : (
     <div data-testid = "menu" className="flex flex-col gap-4">
-      {Object.values(restaurantMenu).map((resMenu) => {
+      {Object.values(restaurantMenu).map((resMenu, index) => {
         return(
-          <MenuItem key={resMenu.card.info.id} {...resMenu.card.info} />
+          <MenuItem key={`${resMenu.card.info.id}-${index}`} {...resMenu.card.info} />
         ) 
         
       })}

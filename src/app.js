@@ -8,7 +8,7 @@ import Contact from "./components/Contact";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router";
 import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
-import Profile from "./components/Profile";
+//import Profile from "./components/Profile";
 import Shimmer from "./components/Shimmer";
 import UserContext from "./utils/UserContext";
 import { Provider } from "react-redux";
@@ -16,7 +16,7 @@ import store from "./utils/store";
 import Cart from "./components/Cart";
 import { filterData } from "./utils/helper";
 //import AboutClass from "./components/AboutClass";
-//import ProfileComponent from "./components/ProfileClass";
+import ProfileComponent from "./components/ProfileClass";
 /*const heading1 = React.createElement(
   "h1",
   {
@@ -81,7 +81,7 @@ const appRouter = createBrowserRouter([
         children: [
           {
             path: "profile", //not same for the second children "/profile" becoz it is render like localhost:1234/profile
-            element: <Profile />, //Nested Routing
+            element:<ProfileComponent />, //Nested Routing
           },
         ],
       },

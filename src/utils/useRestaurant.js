@@ -5,12 +5,16 @@ const useRestaurant = (restaurantID) => {
   const [restaurantMenu, setRestaurantMenu] = useState(null);
 
   async function getData() {
-    const data = await fetch(RES_MENU_URL + restaurantID);
-    const json = await data.json();
+    const res = await fetch(RES_MENU_URL + restaurantID);
+    const data = await res.json();
 
-    const fetchedData =
-      json.data.cards[4].groupedCard.cardGroupMap.REGULAR.cards[1].card.card
-        .itemCards;
+    const fetchedData = data?.data?.cards
+      ?.find((card) => card?.groupedCard)
+      ?.groupedCard?.cardGroupMap?.REGULAR?.cards?.filter(
+        (c) => c?.card?.card?.itemCards
+      )
+      ?.flatMap((c) => c.card.card.itemCards);
+
     setRestaurantMenu(fetchedData);
   }
   useEffect(() => {

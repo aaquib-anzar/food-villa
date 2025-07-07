@@ -14,19 +14,20 @@ const Body = () => {
   } = useOutletContext();
 
   async function getData() {
-    const data = await fetch(
-//"https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING"
-  "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.6768&lng=77.4371&page_type=DESKTOP_WEB_LISTING"
+    const res = await fetch(
+      //"https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING"
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.6768&lng=77.4371&page_type=DESKTOP_WEB_LISTING"
+    );
+    const data = await res.json();
+    const restaurants = data?.data?.cards?.find(
+      (card) => card?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    )?.card?.card?.gridElements?.infoWithStyle?.restaurants;
 
-    );
-    const json = await data.json();
-    setAllRestaurants(
-      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
-
-    setFilteredRestaurants(
-      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
+    if (restaurants) {
+      console.log("Number of restaurants:", restaurants.length);
+      setAllRestaurants(restaurants);
+      setFilteredRestaurants(restaurants);
+    }
   }
 
   useEffect(() => {
